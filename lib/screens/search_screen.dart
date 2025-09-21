@@ -19,90 +19,112 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {}),
-        title: TextField(
-          decoration: InputDecoration(
-            hintText: 'Search',
-            suffixIcon: Stack(
-              children: [
-                IconButton(
-                  icon: Image.asset('assets/shoppingCart.png'),
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all(
-                      Color.fromRGBO(15, 15, 35, 100),
-                    ),
+      body: Column(
+        children: [
+          Container(
+            color: Theme.of(context).appBarTheme.backgroundColor,
+            child: SafeArea(
+              child: Row(
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    onPressed: () => Navigator.pop(context),
                   ),
-                  onPressed: () {},
-                ),
-                Positioned(
-                  top: 5,
-                  right: 5,
-                  child: Container(
-                    padding: EdgeInsets.all(2),
-                    decoration: BoxDecoration(
-                      color: Colors.orange,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Text(
-                      '2',
-                      style: TextStyle(color: Colors.white, fontSize: 10),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Recent Keywords',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              Wrap(
-                spacing: 8.0,
-                children: recentKeywords
-                    .map((keyword) => Chip(label: Text(keyword)))
-                    .toList(),
-              ),
-              SizedBox(height: 16),
-              Text(
-                'Suggested Restaurants',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              ...suggestedRestaurants.map(
-                (rest) => ListTile(
-                  leading: Image.asset('assets/smImagePlaceholder.png'),
-                  title: Text(rest['name']),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
+                  Expanded(child: SizedBox.shrink()),
+                  Stack(
                     children: [
-                      Image.asset('assets/star.png', height: 16),
-                      Text(rest['rating'].toString()),
+                      IconButton(
+                        icon: Image.asset('assets/shoppingCart.png'),
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStateProperty.all(
+                            Color.fromRGBO(15, 15, 35, 100),
+                          ),
+                        ),
+                        onPressed: () {},
+                      ),
+                      Positioned(
+                        top: 5,
+                        right: 5,
+                        child: Container(
+                          padding: EdgeInsets.all(2),
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Text(
+                            '2',
+                            style: TextStyle(color: Colors.white, fontSize: 10),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
-                ),
+                ],
               ),
-              SizedBox(height: 16),
-              Text(
-                'Popular Fast Food',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              Wrap(
-                spacing: 8.0,
-                children: popularFastFood
-                    .map((food) => Chip(label: Text(food)))
-                    .toList(),
-              ),
-            ],
+            ),
           ),
-        ),
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Search',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                contentPadding: EdgeInsets.symmetric(vertical: 10),
+              ),
+            ),
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Recent Keywords',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Wrap(
+                    spacing: 8.0,
+                    children: recentKeywords
+                        .map((keyword) => Chip(label: Text(keyword)))
+                        .toList(),
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    'Suggested Restaurants',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  ...suggestedRestaurants.map(
+                    (rest) => ListTile(
+                      leading: Image.asset('assets/smImagePlaceholder.png'),
+                      title: Text(rest['name']),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/star.png', height: 16),
+                          Text(rest['rating'].toString()),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    'Popular Fast Food',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Wrap(
+                    spacing: 8.0,
+                    children: popularFastFood
+                        .map((food) => Chip(label: Text(food)))
+                        .toList(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
