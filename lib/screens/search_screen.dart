@@ -28,15 +28,13 @@ class _SearchScreenState extends State<SearchScreen> {
                 children: [
                   IconButton(
                     icon: Icon(Icons.arrow_back),
+                    onPressed: () => Navigator.pop(context),
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all(
-                        // secondary color listed below
                         Color.fromRGBO(236, 240, 244, 100),
                       ),
                     ),
-                    onPressed: () => Navigator.pop(context),
                   ),
-                  Spacer(),
                   Text("Search"),
                   Expanded(child: SizedBox.shrink()),
                   Stack(
@@ -119,7 +117,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  SizedBox(height: 50),
                   Text(
                     'Popular Fast Food',
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -127,7 +125,26 @@ class _SearchScreenState extends State<SearchScreen> {
                   Wrap(
                     spacing: 8.0,
                     children: popularFastFood
-                        .map((food) => Chip(label: Text(food)))
+                        .map(
+                          (food) => Chip(
+                            label: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Column(
+                                  children: [
+                                    Image.asset(
+                                      'assets/smImagePlaceholder.png',
+                                      height: 80,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    SizedBox(width: 8),
+                                    Text(food),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
                         .toList(),
                   ),
                 ],
