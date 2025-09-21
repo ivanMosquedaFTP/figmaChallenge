@@ -28,8 +28,16 @@ class _SearchScreenState extends State<SearchScreen> {
                 children: [
                   IconButton(
                     icon: Icon(Icons.arrow_back),
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all(
+                        // secondary color listed below
+                        Color.fromRGBO(236, 240, 244, 100),
+                      ),
+                    ),
                     onPressed: () => Navigator.pop(context),
                   ),
+                  Spacer(),
+                  Text("Search"),
                   Expanded(child: SizedBox.shrink()),
                   Stack(
                     children: [
@@ -72,6 +80,8 @@ class _SearchScreenState extends State<SearchScreen> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
+                filled: true,
+                fillColor: Color.fromRGBO(236, 240, 244, 100),
               ),
             ),
           ),
