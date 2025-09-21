@@ -61,6 +61,8 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                     Text('SIZE:', style: TextStyle(fontSize: 16)),
                     SizedBox(width: 10),
                     ChoiceChip(
+                      showCheckmark: false,
+                      shape: CircleBorder(),
                       label: Text(
                         '10"',
                         style: TextStyle(
@@ -76,6 +78,8 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                     ),
                     SizedBox(width: 5),
                     ChoiceChip(
+                      showCheckmark: false,
+                      shape: CircleBorder(),
                       label: Text(
                         '14"',
                         style: TextStyle(
@@ -91,6 +95,8 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                     ),
                     SizedBox(width: 5),
                     ChoiceChip(
+                      showCheckmark: false,
+                      shape: CircleBorder(),
                       label: Text(
                         '16"',
                         style: TextStyle(
