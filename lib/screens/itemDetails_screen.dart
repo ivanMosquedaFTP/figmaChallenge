@@ -28,12 +28,18 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
               children: [
                 IconButton(
                   icon: Icon(Icons.arrow_back),
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(Colors.white),
+                  ),
                   onPressed: () => Navigator.pop(context),
                 ),
                 IconButton(
                   icon: Icon(
                     isFavorite ? Icons.favorite : Icons.favorite_border,
                     color: isFavorite ? Colors.red : null,
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(Colors.white),
                   ),
                   onPressed: () => setState(() => isFavorite = !isFavorite),
                 ),
