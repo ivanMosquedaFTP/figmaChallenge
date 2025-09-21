@@ -17,12 +17,8 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
     return Scaffold(
       body: Column(
         children: [
-          Container(
+          Padding(
             padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.grey[100],
-              borderRadius: BorderRadius.vertical(bottom: Radius.circular(10)),
-            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -47,16 +43,19 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
             ),
           ),
           Container(
-            height: 200,
+            height: 300,
             color: Colors.grey,
-            child: Image.asset('assets/itemDetailImagePlaceholder.png'),
+            child: Image.asset(
+              'assets/itemDetailImagePlaceholder.png',
+              fit: BoxFit.cover,
+            ),
           ),
           Padding(
             padding: EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                Column(
                   children: [
                     Text(
                       'Burger Bistro',
@@ -65,15 +64,24 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Spacer(),
-                    Image.asset('assets/star.png', height: 20),
-                    Text('4.7', style: TextStyle(fontSize: 16)),
-                    SizedBox(width: 10),
-                    Image.asset('assets/car.png', height: 20),
-                    Text('Free', style: TextStyle(fontSize: 16)),
-                    SizedBox(width: 10),
-                    Image.asset('assets/watch.png', height: 20),
-                    Text('20 min', style: TextStyle(fontSize: 16)),
+                    Center(
+                      child: Container(
+                        width: double.infinity,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset('assets/star.png', height: 20),
+                            Text('4.7', style: TextStyle(fontSize: 16)),
+                            SizedBox(width: 10),
+                            Image.asset('assets/car.png', height: 20),
+                            Text('Free', style: TextStyle(fontSize: 16)),
+                            SizedBox(width: 10),
+                            Image.asset('assets/watch.png', height: 20),
+                            Text('20 min', style: TextStyle(fontSize: 16)),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(height: 10),
@@ -151,12 +159,42 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                     ),
                     SizedBox(height: 5),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Image.asset('assets/ingredientSalt.png', height: 60),
-                        Image.asset('assets/ingredientChicken.png', height: 60),
-                        Image.asset('assets/ingredientOnion.png', height: 60),
-                        Image.asset('assets/ingredientGarlic.png', height: 60),
-                        Image.asset('assets/ingredientPepper.png', height: 60),
+                        Expanded(
+                          child: Image.asset(
+                            'assets/ingredientSalt.png',
+                            height: 60,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Image.asset(
+                            'assets/ingredientChicken.png',
+                            height: 60,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Image.asset(
+                            'assets/ingredientOnion.png',
+                            height: 60,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Image.asset(
+                            'assets/ingredientGarlic.png',
+                            height: 60,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Image.asset(
+                            'assets/ingredientPepper.png',
+                            height: 60,
+                          ),
+                        ),
                       ],
                     ),
                   ],
