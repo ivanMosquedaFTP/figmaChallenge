@@ -10,21 +10,41 @@ class ItemDetailsScreen extends StatefulWidget {
 class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
   int quantity = 2;
   int selectedSize = 14;
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          // Image placeholder
+          Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.grey[100],
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(10)),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () => Navigator.pop(context),
+                ),
+                IconButton(
+                  icon: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: isFavorite ? Colors.red : null,
+                  ),
+                  onPressed: () => setState(() => isFavorite = !isFavorite),
+                ),
+              ],
+            ),
+          ),
           Container(
             height: 200,
             color: Colors.grey,
-            child: Image.asset(
-              'assets/itemDetailImagePlaceholder.png',
-            ), // Replace with actual image
+            child: Image.asset('assets/itemDetailImagePlaceholder.png'),
           ),
-          // Details section
           Padding(
             padding: EdgeInsets.all(16),
             child: Column(
@@ -113,7 +133,8 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                   ],
                 ),
                 SizedBox(height: 10),
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'INGREDIENTS',
@@ -122,55 +143,85 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Spacer(),
+                    SizedBox(height: 5),
                     Row(
                       children: [
-                        Image.asset('assets/ingredientSalt.png', height: 30),
-                        Image.asset('assets/ingredientChicken.png', height: 30),
-                        Image.asset('assets/ingredientOnion.png', height: 30),
-                        Image.asset('assets/ingredientGarlic.png', height: 30),
-                        Image.asset('assets/ingredientPepper.png', height: 30),
+                        Image.asset('assets/ingredientSalt.png', height: 60),
+                        Image.asset('assets/ingredientChicken.png', height: 60),
+                        Image.asset('assets/ingredientOnion.png', height: 60),
+                        Image.asset('assets/ingredientGarlic.png', height: 60),
+                        Image.asset('assets/ingredientPepper.png', height: 60),
                       ],
                     ),
                   ],
                 ),
                 SizedBox(height: 10),
-                Row(
-                  children: [
-                    Text(
-                      '\$32',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Spacer(),
-                    Row(
-                      children: [
-                        IconButton(
-                          icon: Icon(Icons.remove),
-                          onPressed: () =>
-                              setState(() => quantity > 1 ? quantity-- : null),
-                        ),
-                        Text('$quantity', style: TextStyle(fontSize: 18)),
-                        IconButton(
-                          icon: Icon(Icons.add),
-                          onPressed: () => setState(() => quantity++),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'ADD TO CART',
-                    style: TextStyle(color: Colors.white),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[100],
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                    minimumSize: Size(double.infinity, 50),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            '\$32',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Spacer(),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 5,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(18, 18, 35, 100),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Row(
+                              children: [
+                                IconButton(
+                                  icon: Icon(Icons.remove),
+                                  color: Colors.white,
+                                  onPressed: () => setState(
+                                    () => quantity > 1 ? quantity-- : null,
+                                  ),
+                                ),
+                                Text(
+                                  '$quantity',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                IconButton(
+                                  icon: Icon(Icons.add),
+                                  color: Colors.white,
+                                  onPressed: () => setState(() => quantity++),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          'ADD TO CART',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange,
+                          minimumSize: Size(double.infinity, 50),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
