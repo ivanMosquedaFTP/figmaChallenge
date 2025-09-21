@@ -27,7 +27,12 @@ class _SearchScreenState extends State<SearchScreen> {
             suffixIcon: Stack(
               children: [
                 IconButton(
-                  icon: Image.asset('/assets/shoppingCart.png'),
+                  icon: Image.asset('assets/shoppingCart.png'),
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(
+                      Color.fromRGBO(15, 15, 35, 100),
+                    ),
+                  ),
                   onPressed: () {},
                 ),
                 Positioned(
@@ -73,12 +78,12 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               ...suggestedRestaurants.map(
                 (rest) => ListTile(
-                  leading: Image.asset('/assets/smImagePlaceholder.png'),
+                  leading: Image.asset('assets/smImagePlaceholder.png'),
                   title: Text(rest['name']),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset('/assets/star.png', height: 16),
+                      Image.asset('assets/star.png', height: 16),
                       Text(rest['rating'].toString()),
                     ],
                   ),
