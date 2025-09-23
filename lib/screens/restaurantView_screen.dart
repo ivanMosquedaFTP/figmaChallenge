@@ -21,11 +21,18 @@ class _RestaurantViewScreenState extends State<RestaurantViewScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  icon: Icon(Icons.arrow_back),
+                  icon: Icon(Icons.arrow_back_ios_sharp),
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all(Colors.white),
                   ),
                   onPressed: () => Navigator.pop(context),
+                ),
+                IconButton(
+                  icon: Icon(Icons.more_horiz_sharp),
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(Colors.white),
+                  ),
+                  onPressed: () {},
                 ),
               ],
             ),
