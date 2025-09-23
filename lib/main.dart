@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         "/restaurantView": (context) => RestaurantViewScreen(),
         "/search": (context) => SearchScreen(),
       },
-      home: LoginScreen(),
+      home: RestaurantViewScreen(),
     );
   }
 }
