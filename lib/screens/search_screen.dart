@@ -95,8 +95,15 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                   Wrap(
                     spacing: 8.0,
+                    // children: recentKeywords .map((keyword) => Chip(label: Text(keyword))) .toList(),
                     children: recentKeywords
-                        .map((keyword) => Chip(label: Text(keyword)))
+                        .map(
+                          (keyword) => ActionChip(
+                            label: Text(keyword),
+                            onPressed: () =>
+                                Navigator.pushNamed(context, "/itemDetails"),
+                          ),
+                        )
                         .toList(),
                   ),
                   SizedBox(height: 16),
@@ -118,6 +125,12 @@ class _SearchScreenState extends State<SearchScreen> {
                             icon: Icon(Icons.chevron_right_sharp),
                           ),
                           Text(rest['rating'].toString()),
+                          SizedBox(width: 10),
+                          IconButton(
+                            onPressed: () =>
+                                Navigator.pushNamed(context, "/itemDetails"),
+                            icon: Icon(Icons.chevron_right_sharp),
+                          ),
                         ],
                       ),
                     ),

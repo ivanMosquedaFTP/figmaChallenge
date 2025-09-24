@@ -23,7 +23,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  icon: Icon(Icons.arrow_back),
+                  icon: Icon(Icons.arrow_back_ios_sharp),
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all(Colors.white),
                   ),
