@@ -119,6 +119,11 @@ class _SearchScreenState extends State<SearchScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Image.asset('assets/star.png', height: 16),
+                          IconButton(
+                            onPressed: () =>
+                                Navigator.pushNamed(context, "/itemDetails"),
+                            icon: Icon(Icons.chevron_right_sharp),
+                          ),
                           Text(rest['rating'].toString()),
                         ],
                       ),
@@ -133,7 +138,9 @@ class _SearchScreenState extends State<SearchScreen> {
                     spacing: 8.0,
                     children: popularFastFood
                         .map(
-                          (food) => Chip(
+                          (food) => ActionChip(
+                            onPressed: () =>
+                                Navigator.pushNamed(context, "/restaurantView"),
                             label: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [

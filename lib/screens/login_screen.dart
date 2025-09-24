@@ -113,7 +113,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                Navigator.pushNamed(context, "/search"),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.orange,
                             ),
