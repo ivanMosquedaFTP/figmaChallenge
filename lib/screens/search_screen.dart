@@ -119,12 +119,13 @@ class _SearchScreenState extends State<SearchScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Image.asset('assets/star.png', height: 16),
+                          Text(rest['rating'].toString()),
+                          SizedBox(width: 10),
                           IconButton(
                             onPressed: () =>
                                 Navigator.pushNamed(context, "/itemDetails"),
                             icon: Icon(Icons.chevron_right_sharp),
                           ),
-                          Text(rest['rating'].toString()),
                         ],
                       ),
                     ),

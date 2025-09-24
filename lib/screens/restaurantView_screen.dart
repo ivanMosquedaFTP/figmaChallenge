@@ -230,7 +230,10 @@ class _RestaurantViewScreenState extends State<RestaurantViewScreen> {
                                 ),
                                 SizedBox(width: 50),
                                 IconButton(
-                                  onPressed: () {},
+                                  onPressed: () => Navigator.pushNamed(
+                                    context,
+                                    "/itemDetails",
+                                  ),
                                   icon: Icon(Icons.add, color: Colors.white),
                                   style: ButtonStyle(
                                     backgroundColor: WidgetStatePropertyAll(
