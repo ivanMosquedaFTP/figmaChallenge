@@ -119,16 +119,11 @@ class _SearchScreenState extends State<SearchScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Image.asset('assets/star.png', height: 16),
-                          IconButton(
-                            onPressed: () =>
-                                Navigator.pushNamed(context, "/itemDetails"),
-                            icon: Icon(Icons.chevron_right_sharp),
-                          ),
                           Text(rest['rating'].toString()),
                           SizedBox(width: 10),
                           IconButton(
                             onPressed: () =>
-                                Navigator.pushNamed(context, "/itemDetails"),
+                                Navigator.pushNamed(context, "/restaurantView"),
                             icon: Icon(Icons.chevron_right_sharp),
                           ),
                         ],
@@ -146,7 +141,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         .map(
                           (food) => ActionChip(
                             onPressed: () =>
-                                Navigator.pushNamed(context, "/restaurantView"),
+                                Navigator.pushNamed(context, "/itemDetails"),
                             label: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
