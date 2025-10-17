@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/views/suggested_restaurant_widget.dart';
+import 'package:food_delivery/views/popular_fast_food_widget.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
-
   @override
   State<SearchScreen> createState() => _SearchScreenState();
 }
 
 class _SearchScreenState extends State<SearchScreen> {
   final List<String> recentKeywords = ['Burger', 'Sandwich', 'Pizza', 'Sanwi'];
-  final List<Map<String, dynamic>> suggestedRestaurants = [
-    {'name': 'Pansi Restaurant', 'rating': 4.7},
-    {'name': 'American Spicy Burger Shop', 'rating': 4.3},
-    {'name': 'Cafenio Coffee Club', 'rating': 4.0},
-  ];
-  final List<String> popularFastFood = ['European Pizza', 'Buffalo Pizza'];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,7 +89,6 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                   Wrap(
                     spacing: 8.0,
-                    // children: recentKeywords .map((keyword) => Chip(label: Text(keyword))) .toList(),
                     children: recentKeywords
                         .map(
                           (keyword) => ActionChip(
@@ -111,57 +104,13 @@ class _SearchScreenState extends State<SearchScreen> {
                     'Suggested Restaurants',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  ...suggestedRestaurants.map(
-                    (rest) => ListTile(
-                      leading: Image.asset('assets/smImagePlaceholder.png'),
-                      title: Text(rest['name']),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.asset('assets/star.png', height: 16),
-                          Text(rest['rating'].toString()),
-                          SizedBox(width: 10),
-                          IconButton(
-                            onPressed: () =>
-                                Navigator.pushNamed(context, "/restaurantView"),
-                            icon: Icon(Icons.chevron_right_sharp),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  SuggestedRestaurantWidget(),
                   SizedBox(height: 50),
                   Text(
                     'Popular Fast Food',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  Wrap(
-                    spacing: 8.0,
-                    children: popularFastFood
-                        .map(
-                          (food) => ActionChip(
-                            onPressed: () =>
-                                Navigator.pushNamed(context, "/itemDetails"),
-                            label: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Column(
-                                  children: [
-                                    Image.asset(
-                                      'assets/smImagePlaceholder.png',
-                                      height: 80,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    SizedBox(width: 8),
-                                    Text(food),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                        .toList(),
-                  ),
+                  PopularFastFoodWidget(),
                 ],
               ),
             ),
