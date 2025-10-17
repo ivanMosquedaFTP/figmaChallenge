@@ -2,7 +2,6 @@ class ItemDao {
   int? idItem, idRestaurant, cost, deliveryFee;
   String? name, rating, deliveryTime, description;
   List<String> availableSizes, ingredients;
-
   ItemDao({
     this.idItem,
     this.idRestaurant,
@@ -15,8 +14,9 @@ class ItemDao {
     required this.availableSizes,
     required this.ingredients,
   });
-
   factory ItemDao.fromMap(Map<String, dynamic> map) {
+    var avail = map['availableSizes'];
+    var ing = map['ingredients'];
     return ItemDao(
       idItem: map['idItem'],
       idRestaurant: map['idRestaurant'],
@@ -26,8 +26,12 @@ class ItemDao {
       rating: map['rating'],
       deliveryTime: map['deliveryTime'],
       description: map['description'],
-      availableSizes: List<String>.from(map['availableSizes'] ?? []),
-      ingredients: List<String>.from(map['ingredients'] ?? []),
+      availableSizes: (avail is String)
+          ? (avail.isEmpty ? [] : avail.split(','))
+          : List<String>.from(avail ?? []),
+      ingredients: (ing is String)
+          ? (ing.isEmpty ? [] : ing.split(','))
+          : List<String>.from(ing ?? []),
     );
   }
 }
