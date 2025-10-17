@@ -38,6 +38,55 @@ class FigmaDatabase {
 
     await db.execute(restaurant);
     await db.execute(itemTable);
+
+    await db.insert('restaurant', {
+      'deliveryFee': 5,
+      'name': 'Pansi Restaurant',
+      'description': 'Dummy desc',
+      'rating': '4.7',
+      'deliveryTime': '30',
+    });
+
+    await db.insert('restaurant', {
+      'deliveryFee': 5,
+      'name': 'American Spicy Burger Shop',
+      'description': 'Dummy desc',
+      'rating': '4.3',
+      'deliveryTime': '30',
+    });
+
+    await db.insert('restaurant', {
+      'deliveryFee': 5,
+      'name': 'Cafenio Coffee Club',
+      'description': 'Dummy desc',
+      'rating': '4.0',
+      'deliveryTime': '30',
+    });
+
+    // items
+    await db.insert('item', {
+      'idRestaurant': 1,
+      'cost': 10,
+      'deliveryFee': 2,
+      'name': 'European Pizza',
+      'rating': '4.5',
+      'deliveryTime': '20',
+      'description': 'Dummy',
+      'availableSizes': 'S,M,L',
+      'ingredients': 'Cheese, Tomato',
+    });
+
+    await db.insert('item', {
+      'idRestaurant': 2,
+      'cost': 12,
+      'deliveryFee': 2,
+      'name': 'Buffalo Pizza',
+      'rating': '4.2',
+      'deliveryTime': '20',
+      'description': 'Dummy',
+      'availableSizes': 'S,M,L',
+      'ingredients': 'Spicy Sauce',
+    });
   }
 
   Future<int> insert(String table, Map<String, dynamic> data) async {
