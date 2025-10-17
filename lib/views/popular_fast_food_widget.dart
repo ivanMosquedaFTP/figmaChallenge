@@ -39,7 +39,11 @@ class _PopularFastFoodWidgetState extends State<PopularFastFoodWidget> {
           children: items
               .map(
                 (food) => ActionChip(
-                  onPressed: () => Navigator.pushNamed(context, "/itemDetails"),
+                  onPressed: () => Navigator.pushNamed(
+                    context,
+                    "/itemDetails",
+                    arguments: {'itemId': food.idItem},
+                  ),
                   label: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [

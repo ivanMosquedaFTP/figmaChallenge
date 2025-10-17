@@ -233,6 +233,8 @@ class _RestaurantViewScreenState extends State<RestaurantViewScreen> {
                                   onPressed: () => Navigator.pushNamed(
                                     context,
                                     "/itemDetails",
+                                    // arguments: {'itemId': food.idItem},
+                                    arguments: {'itemId': 1},
                                   ),
                                   icon: Icon(Icons.add, color: Colors.white),
                                   style: ButtonStyle(

@@ -93,8 +93,12 @@ class _SearchScreenState extends State<SearchScreen> {
                         .map(
                           (keyword) => ActionChip(
                             label: Text(keyword),
-                            onPressed: () =>
-                                Navigator.pushNamed(context, "/itemDetails"),
+                            onPressed: () => Navigator.pushNamed(
+                              context,
+                              "/itemDetails",
+                              arguments: {'itemId': 1},
+                              // arguments: {'itemId': food.itemId},
+                            ),
                           ),
                         )
                         .toList(),
